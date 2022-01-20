@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" th:href="@{/icons/favicon.ico}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+          integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>Cryptography: Home</title>
+</head>
+<body>
+<div class="header">
+    <h2 class="ui header">Cryptography</h2>
+    <h4 class="ui header" id="headline">Implementation of various encryption, hashing and encoding algorithms</h4>
+</div>
+<div class="body">
+    <div class="ui segment">
+        <div class="ui raised segment">
+            <h3 class="ui header">Encryption</h3>
+            <a th:href="@{/symmetric-encryption/}" target="_self" id="symmetric" class="ui basic green button">Symmetric
+                Encryption</a>
+            <a th:href="@{/asymmetric-encryption/}" target="_self" id="asymmetric" class="ui basic blue button">Asymmetric
+                Encryption</a>
+        </div>
+        <div class="ui raised segment">
+            <h3 class="ui header">Hashing &amp; Encoding</h3>
+            <a th:href="@{/hashing/}" target="_self" id="hashing" class="ui basic teal button">Hashing</a>
+            <a th:href="@{/encoding/}" target="_self" id="encoding" class="ui basic orange button">Encoding</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

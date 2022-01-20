@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+}
+
+.body {
+    margin-bottom: 20vh;
+}
+
+#branch {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#message_field, #hash_field, #algorithm_field, #buttons {
+    margin: 10px;
+}
+
+#hash_button, #reset_button {
+    margin-top: 4vh;
+    transition: all .2s !important;
+    text-align: center;
+}
+
+#buttons {
+    text-align: center;
+}
+
+@media all and (max-height: 768px) and (min-width: 720px) {
+    #branch {
+        flex-direction: row;
+    }
+}

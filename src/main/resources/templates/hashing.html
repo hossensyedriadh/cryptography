@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" th:href="@{/icons/favicon.ico}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/hashing.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+          integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>Cryptography: Hashing</title>
+</head>
+<body>
+<div class="header">
+    <h2 class="ui header">Cryptography</h2>
+    <h4 class="ui header" id="headline">Hashing</h4>
+</div>
+<div class="body">
+    <div class="ui raised segment">
+        <form class="ui form" autocomplete="off" th:object="${HashRequest}" name="hash_form"
+              method="post" th:action="@{/hashing/generate-hash}">
+            <div id="branch">
+                <div class="field" id="message_field">
+                    <label for="message">Input:</label>
+                    <textarea id="message" class="ui input" th:field="*{text}" rows="5" cols="60" wrap="soft"
+                              required></textarea>
+                </div>
+                <div th:if="${HashRequest.hash != null}">
+                    <div class="field" id="hash_field">
+                        <label for="hash">Hash:</label>
+                        <textarea id="hash" th:text="${HashRequest.hash}" class="ui input" rows="5" cols="60"
+                                  wrap="soft" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="field" id="algorithm_field">
+                <label for="algorithm">Hash Algorithm:</label>
+                <select id="algorithm" th:field="*{algorithm}" class="ui dropdown" required>
+                    <option value="MD5">MD5</option>
+                    <option value="BCRYPT">BCrypt</option>
+                    <option value="SHA_1">SHA-1</option>
+                    <optgroup label="SHA-2">
+                        <option value="SHA_2_256">SHA-2 256</option>
+                        <option value="SHA_2_384">SHA-2 384</option>
+                        <option value="SHA_2_512">SHA-2 512</option>
+                    </optgroup>
+                    <optgroup label="SHA-3">
+                        <option value="SHA_3_256">SHA-3 256</option>
+                        <option value="SHA_3_384">SHA-3 384</option>
+                        <option value="SHA_3_512">SHA-3 512</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div id="buttons" class="field">
+                <button type="submit" id="hash_button" class="ui blue button">
+                    <i class="hashtag icon"></i>
+                    Hash
+                </button>
+                <a th:href="@{/hashing/}" id="reset_button" class="ui button">
+                    <i class="times icon"></i>
+                    Reset
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,2 +1,2 @@
 # cryptography
-Cryptographic algorithms demonstration application
+Cryptographic algorithms' demonstration application
