@@ -18,11 +18,26 @@
 <div class="body">
     <div class="ui segment">
         <div class="ui raised segment">
-            <h3 class="ui header">Encryption</h3>
-            <a th:href="@{/symmetric-encryption/}" target="_self" id="symmetric" class="ui basic green button">Symmetric
-                Encryption</a>
-            <a th:href="@{/asymmetric-encryption/}" target="_self" id="asymmetric" class="ui basic blue button">Asymmetric
-                Encryption</a>
+            <h3 class="ui header">Symmetric Encryption</h3>
+            <a th:href="@{/symmetric-encryption/key-generator/}" target="_self" id="symmetric_gen"
+               class="ui basic green button">
+                Generate Key
+            </a>
+            <a th:href="@{/symmetric-encryption/encrypt-decrypt}" target="_self" id="symmetric_enc_dec"
+               class="ui basic blue button">
+                Encrypt / Decrypt
+            </a>
+        </div>
+        <div class="ui raised segment">
+            <h3 class="ui header">Asymmetric Encryption</h3>
+            <a th:href="@{/asymmetric-encryption/key-generator/}" target="_self" id="asymmetric_gen"
+               class="ui basic green button">
+                Generate Key Pair
+            </a>
+            <a th:href="@{/asymmetric-encryption/encrypt-decrypt/}" target="_self" id="asymmetric_enc_dec"
+               class="ui basic blue button">
+                Encrypt / Decrypt
+            </a>
         </div>
         <div class="ui raised segment">
             <h3 class="ui header">Hashing &amp; Encoding</h3>

@@ -14,20 +14,21 @@ body {
 
 .body {
     text-align: center;
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
 }
 
-#symmetric, #asymmetric, #hashing, #encoding {
+#symmetric_gen, #symmetric_enc_dec, #asymmetric_gen,
+#asymmetric_enc_dec, #hashing, #encoding {
     transition: all .2s !important;
     margin: 5px 5px;
 }
 
-#symmetric:hover {
+#symmetric_gen:hover, #asymmetric_gen:hover {
     background-color: #21BA45 !important;
     color: #000000 !important;
 }
 
-#asymmetric:hover {
+#symmetric_enc_dec:hover, #asymmetric_enc_dec:hover {
     background-color: #2185D0 !important;
     color: #000000 !important;
 }
@@ -40,4 +41,10 @@ body {
 #encoding:hover {
     background-color: #F2711C !important;
     color: #000000 !important;
+}
+
+@media all and (min-width: 1600px) {
+    .body {
+        margin-bottom: 30vh;
+    }
 }

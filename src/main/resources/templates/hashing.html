@@ -18,7 +18,7 @@
 <div class="body">
     <div class="ui raised segment">
         <form class="ui form" autocomplete="off" th:object="${HashRequest}" name="hash_form"
-              method="post" th:action="@{/hashing/generate-hash}">
+              method="post" th:action="@{/hashing/generate-hash/}">
             <div id="branch">
                 <div class="field" id="message_field">
                     <label for="message">Input:</label>

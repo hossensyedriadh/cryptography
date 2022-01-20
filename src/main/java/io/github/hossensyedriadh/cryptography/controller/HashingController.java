@@ -29,7 +29,7 @@ public class HashingController {
         return new ModelAndView("hashing");
     }
 
-    @PostMapping("/generate-hash")
+    @PostMapping("/generate-hash/")
     public ModelAndView generateHash(@ModelAttribute("HashRequest") HashModel hashModel, Model model) {
         hashModel.setHash(hashingServiceObjectFactory.getObject().generateHash(hashModel.getText(), hashModel.getAlgorithm()));
         model.addAttribute("HashRequest", hashModel);

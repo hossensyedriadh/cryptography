@@ -13,37 +13,36 @@ body {
 }
 
 .body {
-    margin-bottom: 20vh;
+    margin-bottom: 5vh;
 }
 
-#branch {
+#keys {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-#message_field, #hash_field, #algorithm_field, #buttons {
-    margin: 10px;
-}
-
-#hash_button, #reset_button {
-    margin-top: 4vh;
-    transition: all .2s !important;
-    text-align: center;
+#public_key_field,#private_key_field, #algorithm_information {
+    margin: 5px;
 }
 
 #buttons {
+    margin-top: 3vh;
     text-align: center;
 }
 
 @media all and (min-width: 1600px) {
     .body {
-        margin-bottom: 25vh;
+        margin-bottom: 35vh;
+    }
+
+    #keys {
+        flex-direction: row;
     }
 }
 
 @media all and (max-height: 768px) and (min-width: 720px) {
-    #branch {
+    #keys {
         flex-direction: row;
     }
 }
