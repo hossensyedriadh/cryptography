@@ -1,6 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 
+html {
+    height: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -13,6 +17,37 @@ body {
 }
 
 .body {
+    margin-bottom: 2vh;
+}
+
+#keys, #text_fields {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    transition: all .2s !important;
+}
+
+#public_key_field, #private_key_field,
+#plain_text_field, #encrypted_text_field,
+#existing_public_key_field, #options_field {
+    margin: 5px;
+}
+
+#buttons {
+    margin-top: 2vh;
     text-align: center;
-    margin-bottom: 20vh;
+}
+
+@media all and (min-width: 1600px) {
+    .body {
+        margin-bottom: 10vh;
+    }
+}
+
+@media all and (max-width: 640px) {
+    #keys, #text_fields {
+        flex-direction: column;
+    }
 }

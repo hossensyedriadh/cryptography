@@ -11,9 +11,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public final class AsymmetricEncryptionServiceImpl implements AsymmetricEncryptionService {
@@ -41,47 +40,6 @@ public final class AsymmetricEncryptionServiceImpl implements AsymmetricEncrypti
     }
 
     /**
-     * Encrypt message using Public Key from the generated Public-Private keypair with defined keySize
-     *
-     * @param message Message to be encrypted
-     * @param keySize Size of the RSA Keypair to be generated
-     * @return Encrypted message along with Keypair
-     * @see PublicKey
-     * @see PrivateKey
-     * @see KeySize
-     */
-    @Override
-    public Map<String, Object> encryptMessage(String message, KeySize keySize) {
-        Map<String, Object> encryptionInfo = new HashMap<>();
-
-        try {
-            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(RSA_ALGORITHM);
-            SecureRandom secureRandom = SecureRandom.getInstanceStrong();
-            keyPairGenerator.initialize(keySize.getValue(), secureRandom);
-            KeyPair keyPair = keyPairGenerator.generateKeyPair();
-
-            PublicKey publicKey = keyPair.getPublic();
-            PrivateKey privateKey = keyPair.getPrivate();
-
-            Cipher cipher = Cipher.getInstance(RSA_ALGORITHM);
-            cipher.init(Cipher.PUBLIC_KEY, publicKey);
-            byte[] encrypted = cipher.doFinal(message.getBytes(StandardCharsets.UTF_8));
-            String encryptedMessage = Base64.getEncoder().encodeToString(encrypted);
-
-            encryptionInfo.put("encryptedText", encryptedMessage);
-            encryptionInfo.put("publicKey", Base64.getEncoder().encodeToString(publicKey.getEncoded()));
-            encryptionInfo.put("privateKey", Base64.getEncoder().encodeToString(privateKey.getEncoded()));
-            encryptionInfo.put("keyFormat", privateKey.getFormat());
-            encryptionInfo.put("algorithm", privateKey.getAlgorithm());
-
-            return encryptionInfo;
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException
-                | IllegalBlockSizeException | BadPaddingException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**
      * Encrypt message using given Public key
      *
      * @param message   Message to be encrypted
@@ -92,9 +50,21 @@ public final class AsymmetricEncryptionServiceImpl implements AsymmetricEncrypti
     @Override
     public String encryptMessage(String message, String publicKey) {
         try {
+            if (publicKey.startsWith("-----BEGIN RSA PUBLIC KEY-----")
+                    && publicKey.endsWith("-----END RSA PUBLIC KEY-----")) {
+                String substring = publicKey.substring(32);
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(substring);
+                String reverseSubstring = stringBuilder.reverse().toString();
+                reverseSubstring = reverseSubstring.substring(30);
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(reverseSubstring);
+                publicKey = stringBuilder.reverse().toString();
+            }
+
             byte[] decodedPublicKey = Base64.getDecoder().decode(publicKey.getBytes(StandardCharsets.UTF_8));
 
-            PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decodedPublicKey);
+            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(decodedPublicKey);
             KeyFactory keyFactory = KeyFactory.getInstance(RSA_ALGORITHM);
             PublicKey key = keyFactory.generatePublic(keySpec);
 
@@ -120,7 +90,8 @@ public final class AsymmetricEncryptionServiceImpl implements AsymmetricEncrypti
     @Override
     public String decryptMessage(String message, String privateKey) {
         try {
-            byte[] decodedPrivateKey = Base64.getDecoder().decode(privateKey.getBytes(StandardCharsets.UTF_8));
+            String parsedKey = privateKey.split("-----BEGIN RSA PRIVATE KEY-----\n")[1].split("\n-----END RSA PRIVATE KEY-----\n")[0];
+            byte[] decodedPrivateKey = Base64.getDecoder().decode(parsedKey.getBytes(StandardCharsets.UTF_8));
 
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decodedPrivateKey);
             KeyFactory keyFactory = KeyFactory.getInstance(RSA_ALGORITHM);

@@ -17,8 +17,8 @@ body {
     margin-bottom: 10vh;
 }
 
-#symmetric_gen, #symmetric_enc_dec, #asymmetric_gen,
-#asymmetric_enc_dec, #hashing, #encoding {
+#symmetric_gen, #symmetric_enc, #symmetric_dec, #asymmetric_gen,
+#asymmetric_enc, #asymmetric_dec, #hashing, #encoding {
     transition: all .2s !important;
     margin: 5px 5px;
 }
@@ -28,9 +28,14 @@ body {
     color: #000000 !important;
 }
 
-#symmetric_enc_dec:hover, #asymmetric_enc_dec:hover {
+#symmetric_enc:hover, #asymmetric_enc:hover{
     background-color: #2185D0 !important;
     color: #000000 !important;
+}
+
+#symmetric_dec:hover, #asymmetric_dec:hover {
+    background-color: #D01919 !important;
+    color: #ffffff !important;
 }
 
 #hashing:hover {

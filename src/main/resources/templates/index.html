@@ -23,9 +23,13 @@
                class="ui basic green button">
                 Generate Key
             </a>
-            <a th:href="@{/symmetric-encryption/encrypt-decrypt}" target="_self" id="symmetric_enc_dec"
+            <a th:href="@{/symmetric-encryption/encryption/}" target="_self" id="symmetric_enc"
                class="ui basic blue button">
-                Encrypt / Decrypt
+                Encrypt
+            </a>
+            <a th:href="@{/symmetric-encryption/decryption/}" target="_self" id="symmetric_dec"
+               class="ui basic red button">
+                Decrypt
             </a>
         </div>
         <div class="ui raised segment">
@@ -34,9 +38,13 @@
                class="ui basic green button">
                 Generate Key Pair
             </a>
-            <a th:href="@{/asymmetric-encryption/encrypt-decrypt/}" target="_self" id="asymmetric_enc_dec"
+            <a th:href="@{/asymmetric-encryption/encryption/}" target="_self" id="asymmetric_enc"
                class="ui basic blue button">
-                Encrypt / Decrypt
+                Encrypt
+            </a>
+            <a th:href="@{/asymmetric-encryption/decryption/}" target="_self" id="asymmetric_dec"
+               class="ui basic red button">
+                Decrypt
             </a>
         </div>
         <div class="ui raised segment">

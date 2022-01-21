@@ -3,7 +3,6 @@ package io.github.hossensyedriadh.cryptography.service.encryption;
 import io.github.hossensyedriadh.cryptography.enumerator.KeySize;
 
 import java.security.KeyPair;
-import java.util.Map;
 
 public sealed interface AsymmetricEncryptionService permits AsymmetricEncryptionServiceImpl {
     /**
@@ -15,18 +14,6 @@ public sealed interface AsymmetricEncryptionService permits AsymmetricEncryption
      * @see KeySize
      */
     KeyPair generateKeyPair(KeySize keySize);
-
-    /**
-     * Encrypt message using Public Key from the generated Public-Private keypair with defined keySize
-     *
-     * @param message Message to be encrypted
-     * @param keySize Size of the RSA Keypair to be generated
-     * @return Encrypted message along with Keypair
-     * @see java.security.PublicKey
-     * @see java.security.PrivateKey
-     * @see KeySize
-     */
-    Map<String, Object> encryptMessage(String message, KeySize keySize);
 
     /**
      * Encrypt message using given Public key
@@ -41,10 +28,10 @@ public sealed interface AsymmetricEncryptionService permits AsymmetricEncryption
     /**
      * Decrypt message using given Private key
      *
-     * @param message Encrypted message
+     * @param message    Encrypted message
      * @param privateKey Private key value (Base64 encoded)
      * @return Decrypted plain text message
      * @see java.security.PrivateKey
-    * */
+     */
     String decryptMessage(String message, String privateKey);
 }
