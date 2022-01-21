@@ -26,6 +26,10 @@ body {
     margin: 5px;
 }
 
+#public_key, #private_key {
+    font-family: "Lucida Console", Consolas, sans-serif;
+}
+
 .button {
 	transition: all .2s !important;
 }

@@ -36,6 +36,11 @@ body {
     margin: 5px;
 }
 
+#message, #encrypted_text, #existing_public_key,
+#public_key, #private_key {
+    font-family: "Lucida Console", Consolas, sans-serif;
+}
+
 #buttons {
     margin-top: 2vh;
     text-align: center;
