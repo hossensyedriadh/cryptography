@@ -90,8 +90,18 @@ public final class AsymmetricEncryptionServiceImpl implements AsymmetricEncrypti
     @Override
     public String decryptMessage(String message, String privateKey) {
         try {
-            String parsedKey = privateKey.split("-----BEGIN RSA PRIVATE KEY-----\n")[1].split("\n-----END RSA PRIVATE KEY-----\n")[0];
-            byte[] decodedPrivateKey = Base64.getDecoder().decode(parsedKey.getBytes(StandardCharsets.UTF_8));
+            if (privateKey.startsWith("-----BEGIN RSA PRIVATE KEY-----")
+                    && privateKey.endsWith("-----END RSA PRIVATE KEY-----")) {
+                String substring = privateKey.substring(33);
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(substring);
+                String reverseSubstring = stringBuilder.reverse().toString();
+                reverseSubstring = reverseSubstring.substring(31);
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(reverseSubstring);
+                privateKey = stringBuilder.reverse().toString();
+            }
+            byte[] decodedPrivateKey = Base64.getDecoder().decode(privateKey.getBytes(StandardCharsets.UTF_8));
 
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decodedPrivateKey);
             KeyFactory keyFactory = KeyFactory.getInstance(RSA_ALGORITHM);

@@ -13,15 +13,33 @@ body {
 }
 
 .body {
-    margin-bottom: 5vh;
+    margin-bottom: 10vh;
+}
+
+#encrypted_text_field, #decrypted_text_field,
+#private_key_field {
+    margin: 5px;
 }
 
 .button {
     transition: all .2s !important;
 }
 
+#buttons {
+    margin-top: 2vh;
+    text-align: center;
+}
+
 @media all and (min-width: 1600px) {
     .body {
-        margin-bottom: 20vh;
+        margin-bottom: 25vh;
+    }
+}
+
+@media all and (max-width: 400px) and (max-height: 720px) {
+    .body {
+        margin-bottom: 5vh;
+        height: 75vh;
+        width: 95vw;
     }
 }

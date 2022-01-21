@@ -1,3 +1,4 @@
+let encryption_form = document.getElementById('encryption_form');
 let method = document.getElementById('method');
 let encrypted_text = document.getElementById('encrypted_text');
 let existing_public_key = document.getElementById('existing_public_key');
@@ -22,11 +23,9 @@ if (method.value === "USE_EXISTING_KEY") {
 function toggle() {
     if (method.value === "USE_EXISTING_KEY") {
         existing();
-        encrypted_text.innerHTML = null;
         encrypted_text.value = null;
     } else if (method.value === "GENERATE_NEW_KEY") {
         gen_new();
-        encrypted_text.innerHTML = null;
         encrypted_text.value = null;
     }
 }
@@ -38,9 +37,7 @@ function existing() {
     existing_public_key.required = true;
     keysize.required = false;
     notice.style.display = "none";
-    new_public_key.innerHTML = null;
     new_public_key.value = null;
-    new_private_key.innerHTML = null;
     new_private_key.value = null;
 }
 
@@ -51,7 +48,6 @@ function gen_new() {
     existing_public_key.required = false;
     keysize.required = true;
     notice.style.display = "block";
-    existing_public_key.innerHTML = null;
     existing_public_key.value = null;
 }
 
@@ -66,4 +62,8 @@ function validatePublicKey() {
         public_key_error.style.display = 'block';
         existing_public_key_field.className = 'field error';
     }
+}
+
+function clearFields() {
+    encryption_form.reset();
 }

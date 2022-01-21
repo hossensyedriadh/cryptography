@@ -17,7 +17,8 @@
 </div>
 <div class="body">
     <div class="ui raised segment">
-        <form th:action="@{/asymmetric-encryption/encrypt/}" th:object="${Encryption}" method="post" class="ui form">
+        <form th:action="@{/asymmetric-encryption/encrypt/}" autocomplete="off" th:object="${Encryption}" method="post"
+              class="ui form" id="encryption_form">
             <div id="text_fields">
                 <div class="field" id="plain_text_field">
                     <label for="message">Text to be encrypted:</label>
@@ -56,20 +57,22 @@
                 </div>
             </div>
             <div class="field" id="existing_public_key_field">
-                <label for="existing_public_key">Enter Public Key:</label>
-                <textarea id="existing_public_key" class="ui input" th:field="*{existingKey}" rows="5" cols="70" onkeyup="validatePublicKey()"
-                          wrap="soft" placeholder="-----BEGIN RSA PUBLIC KEY-----&#10;//key value&#10;-----END RSA PUBLIC KEY-----"
+                <label for="existing_public_key">Enter Public Key (X509 Format):</label>
+                <textarea id="existing_public_key" class="ui input" th:field="*{existingKey}" rows="5" cols="70"
+                          onkeyup="validatePublicKey()"
+                          wrap="soft"
+                          placeholder="-----BEGIN RSA PUBLIC KEY-----&#10;//X509 Key&#10;-----END RSA PUBLIC KEY-----&#10;"
                           required></textarea>
                 <small id="public_key_error">Invalid RSA Public Key</small>
             </div>
             <div id="keys">
                 <div class="field" id="public_key_field">
-                    <label for="new_public_key">Public Key:</label>
+                    <label for="new_public_key">Public Key (X509 Format):</label>
                     <textarea id="new_public_key" class="ui input" th:text="${Encryption.genPublicKey}" rows="5"
                               cols="50" wrap="soft" readonly></textarea>
                 </div>
                 <div class="field" id="private_key_field">
-                    <label for="new_private_key">Private Key:</label>
+                    <label for="new_private_key">Private Key (PKCS#8 Format):</label>
                     <textarea id="new_private_key" class="ui input" th:text="${Encryption.genPrivateKey}" rows="5"
                               cols="50" wrap="soft" readonly></textarea>
                 </div>
@@ -78,10 +81,11 @@
                 required</small>
             <div class="field" id="buttons">
                 <button type="submit" id="submit_button" class="ui blue button">
-                    <i class="key icon"></i>
+                    <i class="lock icon"></i>
                     Encrypt
                 </button>
-                <a class="ui button" th:href="@{/asymmetric-encryption/encryption/}" target="_self">
+                <a class="ui button" onclick="clearFields()" th:href="@{/asymmetric-encryption/encryption/}"
+                   target="_self">
                     <i class="times icon"></i>
                     Reset
                 </a>

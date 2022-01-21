@@ -17,21 +17,39 @@
 </div>
 <div class="body">
     <div class="ui raised segment">
-        <form action="#" method="post" class="ui form">
+        <form th:action="@{/asymmetric-encryption/decrypt/}" th:object="${Decryption}" autocomplete="off" method="post"
+              class="ui form" id="decryption_form">
             <div class="field">
-                <label for="message">Encrypted text:</label>
-                <textarea id="message" class="ui input" wrap="soft" rows="4" cols="50" required></textarea>
+                <div class="two fields">
+                    <div class="field" id="encrypted_text_field">
+                        <label for="encrypted_text">Encrypted text:</label>
+                        <textarea id="encrypted_text" class="ui input" th:field="*{encryptedText}" wrap="soft" rows="4"
+                                  cols="50"
+                                  required></textarea>
+                    </div>
+                    <div class="field" id="decrypted_text_field">
+                        <label for="decrypted_text">Decrypted text:</label>
+                        <textarea id="decrypted_text" class="ui input" th:text="${Decryption.decryptedText}" wrap="soft"
+                                  rows="4" cols="50"
+                                  readonly></textarea>
+                    </div>
+                </div>
             </div>
-            <div class="field" id="existing_public_key_field">
-                <label for="private_key">Enter Private Key:</label>
-                <textarea id="private_key" class="ui input" rows="5" cols="70" wrap="soft" required></textarea>
+            <div class="field" id="private_key_field">
+                <label for="private_key">Enter Private Key (PKCS#8 Format):</label>
+                <textarea id="private_key" class="ui input" th:field="*{privateKey}" onkeyup="validatePrivateKey()"
+                          rows="5" cols="70" wrap="soft"
+                          placeholder="-----BEGIN RSA PRIVATE KEY-----&#10;//PKCS#8 Key&#10;-----END RSA PRIVATE KEY-----&#10;"
+                          required></textarea>
+                <small id="private_key_error">Invalid RSA Private Key</small>
             </div>
-            <div class="field">
-                <button type="submit" class="ui blue button">
-                    <i class="key icon"></i>
+            <div class="field" id="buttons">
+                <button type="submit" id="submit_button" class="ui blue button">
+                    <i class="unlock icon"></i>
                     Decrypt
                 </button>
-                <a class="ui button" href="#" target="_self">
+                <a class="ui button" onclick="clearFields()" th:href="@{/asymmetric-encryption/decryption/}"
+                   target="_self">
                     <i class="times icon"></i>
                     Reset
                 </a>
@@ -39,5 +57,6 @@
         </form>
     </div>
 </div>
+<script th:src="@{/js/asymmetric-decryption.js}" type="text/javascript"></script>
 </body>
 </html>

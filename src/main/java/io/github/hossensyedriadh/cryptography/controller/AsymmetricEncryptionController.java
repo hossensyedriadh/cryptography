@@ -1,6 +1,7 @@
 package io.github.hossensyedriadh.cryptography.controller;
 
 import io.github.hossensyedriadh.cryptography.enumerator.Method;
+import io.github.hossensyedriadh.cryptography.model.AsymmetricDecryption;
 import io.github.hossensyedriadh.cryptography.model.AsymmetricEncryption;
 import io.github.hossensyedriadh.cryptography.model.AsymmetricKeyGenerator;
 import io.github.hossensyedriadh.cryptography.service.encryption.AsymmetricEncryptionService;
@@ -89,6 +90,18 @@ public class AsymmetricEncryptionController {
 
     @GetMapping("/decryption/")
     public ModelAndView decryptionForm(Model model) {
+        AsymmetricDecryption decryption = new AsymmetricDecryption();
+        model.addAttribute("Decryption", decryption);
+
+        return new ModelAndView("asymmetric-decryption");
+    }
+
+    @PostMapping("/decrypt/")
+    public ModelAndView decrypt(@ModelAttribute AsymmetricDecryption decryption, Model model) {
+        decryption.setDecryptedText(this.asymmetricEncryptionServiceObjectFactory.getObject()
+                .decryptMessage(decryption.getEncryptedText(), decryption.getPrivateKey()));
+        model.addAttribute("Decryption", decryption);
+
         return new ModelAndView("asymmetric-decryption");
     }
 }

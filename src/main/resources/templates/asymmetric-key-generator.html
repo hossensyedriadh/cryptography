@@ -22,13 +22,13 @@
             <div th:if="${Generator.publicKey != null && Generator.privateKey != null}">
                 <div id="keys">
                     <div class="field" id="public_key_field">
-                        <label for="public_key">Public Key</label>
+                        <label for="public_key">Public Key (X509 Format):</label>
                         <textarea id="public_key" class="ui input" th:text="${Generator.publicKey}" wrap="soft"
                                   rows="10" cols="40"
                                   readonly></textarea>
                     </div>
                     <div class="field" id="private_key_field">
-                        <label for="private_key">Private Key</label>
+                        <label for="private_key">Private Key (PKCS#8 Format):</label>
                         <textarea id="private_key" class="ui input" th:text="${Generator.privateKey}" wrap="soft"
                                   rows="10" cols="40" readonly></textarea>
                     </div>

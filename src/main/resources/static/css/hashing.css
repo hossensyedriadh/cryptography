@@ -47,3 +47,11 @@ body {
         flex-direction: row;
     }
 }
+
+@media all and (max-width: 400px) and (max-height: 720px) {
+    .body {
+        margin-bottom: 5vh;
+        height: 75vh;
+        width: 95vw;
+    }
+}
