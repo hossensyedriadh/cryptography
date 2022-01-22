@@ -53,17 +53,18 @@
 </div>
 <div class="body">
     <div class="ui raised segment">
-        <form id="encoding_form" class="ui form" th:action="@{/encoding/encode/}" method="post">
+        <form id="encoding_form" class="ui form" th:action="@{/encoding/encode/}" th:object="${Encoder}" method="post">
             <div class="field">
                 <div class="two fields">
                     <div class="required field">
                         <label for="text">Input text:</label>
-                        <textarea id="text" class="ui input" rows="5" cols="40" wrap="soft"
+                        <textarea id="text" class="ui input" th:field="*{plainText}" rows="5" cols="40" wrap="soft"
                                   required></textarea>
                     </div>
                     <div class="field">
                         <label for="encoded_text">Encoded text:</label>
-                        <textarea id="encoded_text" class="ui input" rows="5" cols="40" wrap="soft"
+                        <textarea id="encoded_text" class="ui input" th:text="${Encoder.encodedText}" rows="5"
+                                  cols="40" wrap="soft"
                                   readonly></textarea>
                     </div>
                 </div>
@@ -71,7 +72,7 @@
                     <div class="two fields">
                         <div class="required field">
                             <label for="format">Encoding Format:</label>
-                            <select class="ui dropdown" id="format" required>
+                            <select class="ui dropdown" id="format" th:field="*{format}" required>
                                 <option value="BASE_64">Base64</option>
                                 <option value="UNICODE">Unicode (UTF-16)</option>
                                 <option value="URL">URL Encode</option>

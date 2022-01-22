@@ -12,14 +12,4 @@ public sealed interface EncodingService permits EncodingServiceImpl {
      * @see EncodingType
      */
     String encode(String message, EncodingType type);
-
-    /**
-     * Encode message of defined format
-     *
-     * @param message Message to be decoded
-     * @param type    Current format of the message
-     * @return Decoded message
-     * @see EncodingType
-     */
-    String decode(String message, EncodingType type);
 }

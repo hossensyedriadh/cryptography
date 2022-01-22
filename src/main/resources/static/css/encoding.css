@@ -25,6 +25,10 @@ body {
     transition: all .2s !important;
 }
 
+textarea {
+    font-family: "Lucida Console", Consolas, sans-serif !important;
+}
+
 @media all and (min-width: 1600px) {
     .body {
         margin-bottom: 25vh;
