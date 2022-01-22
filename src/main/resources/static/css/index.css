@@ -18,7 +18,7 @@ body {
 }
 
 #symmetric_gen, #symmetric_enc, #symmetric_dec, #asymmetric_gen,
-#asymmetric_enc, #asymmetric_dec, #hashing, #encoding {
+#asymmetric_enc, #asymmetric_dec, #hashing, #encoding, #decoding {
     transition: all .2s !important;
     margin: 5px 5px;
 }
@@ -28,7 +28,7 @@ body {
     color: #000000 !important;
 }
 
-#symmetric_enc:hover, #asymmetric_enc:hover{
+#symmetric_enc:hover, #asymmetric_enc:hover {
     background-color: #2185D0 !important;
     color: #000000 !important;
 }
@@ -48,8 +48,28 @@ body {
     color: #000000 !important;
 }
 
+#decoding:hover {
+    background-color: #D01919 !important;
+    color: #ffffff !important;
+}
+
 @media all and (min-width: 1600px) {
     .body {
-        margin-bottom: 30vh;
+        margin-bottom: 35vh;
+    }
+}
+
+@media all and (max-height: 768px) and (min-width: 720px) {
+    .body {
+        margin-bottom: 5vh;
+        height: 60vh;
+    }
+}
+
+@media all and (max-width: 400px) and (max-height: 720px) {
+    .body {
+        margin-bottom: 5vh;
+        height: 65vh;
+        width: 95vw;
     }
 }

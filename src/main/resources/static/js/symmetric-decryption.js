@@ -1,4 +1,4 @@
-let encryption_form = document.getElementById('encryption_form');
+let decryption_form = document.getElementById('decryption_form');
 let encrypted_input_field = document.getElementById('encrypted_input_field');
 let encrypted_input = document.getElementById('encrypted_input');
 let input_error = document.getElementById('input_error');
@@ -36,5 +36,5 @@ function validateKey() {
 }
 
 function clearFields() {
-    encryption_form.reset();
+    decryption_form.reset();
 }

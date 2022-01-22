@@ -35,6 +35,13 @@ textarea {
     }
 }
 
+@media all and (max-height: 768px) and (min-width: 720px) {
+    .body {
+        margin-bottom: 5vh;
+        height: 35vh;
+    }
+}
+
 @media all and (max-width: 400px) and (max-height: 720px) {
     #menu {
         display: flex;

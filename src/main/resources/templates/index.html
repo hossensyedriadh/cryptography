@@ -17,40 +17,64 @@
 </div>
 <div class="body">
     <div class="ui segment">
-        <div class="ui raised segment">
-            <h3 class="ui header">Symmetric Encryption</h3>
-            <a th:href="@{/symmetric-encryption/key-generator/}" target="_self" id="symmetric_gen"
-               class="ui basic green button">
-                Generate Key
-            </a>
-            <a th:href="@{/symmetric-encryption/encryption/}" target="_self" id="symmetric_enc"
-               class="ui basic blue button">
-                Encrypt
-            </a>
-            <a th:href="@{/symmetric-encryption/decryption/}" target="_self" id="symmetric_dec"
-               class="ui basic red button">
-                Decrypt
-            </a>
-        </div>
-        <div class="ui raised segment">
-            <h3 class="ui header">Asymmetric Encryption</h3>
-            <a th:href="@{/asymmetric-encryption/key-generator/}" target="_self" id="asymmetric_gen"
-               class="ui basic green button">
-                Generate Key Pair
-            </a>
-            <a th:href="@{/asymmetric-encryption/encryption/}" target="_self" id="asymmetric_enc"
-               class="ui basic blue button">
-                Encrypt
-            </a>
-            <a th:href="@{/asymmetric-encryption/decryption/}" target="_self" id="asymmetric_dec"
-               class="ui basic red button">
-                Decrypt
-            </a>
-        </div>
-        <div class="ui raised segment">
-            <h3 class="ui header">Hashing &amp; Encoding</h3>
-            <a th:href="@{/hashing/}" target="_self" id="hashing" class="ui basic teal button">Hashing</a>
-            <a th:href="@{/encoding/}" target="_self" id="encoding" class="ui basic orange button">Encoding</a>
+        <div class="ui form">
+            <div class="field">
+                <div class="two fields">
+                    <div class="field">
+                        <div class="ui raised segment">
+                            <h3 class="ui header">Symmetric Encryption</h3>
+                            <a th:href="@{/symmetric-encryption/key-generator/}" target="_self" id="symmetric_gen"
+                               class="ui basic green button">
+                                Generate Key
+                            </a>
+                            <a th:href="@{/symmetric-encryption/encryption/}" target="_self" id="symmetric_enc"
+                               class="ui basic blue button">
+                                Encrypt
+                            </a>
+                            <a th:href="@{/symmetric-encryption/decryption/}" target="_self" id="symmetric_dec"
+                               class="ui basic red button">
+                                Decrypt
+                            </a>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui raised segment">
+                            <h3 class="ui header">Asymmetric Encryption</h3>
+                            <a th:href="@{/asymmetric-encryption/key-generator/}" target="_self" id="asymmetric_gen"
+                               class="ui basic green button">
+                                Generate Key Pair
+                            </a>
+                            <a th:href="@{/asymmetric-encryption/encryption/}" target="_self" id="asymmetric_enc"
+                               class="ui basic blue button">
+                                Encrypt
+                            </a>
+                            <a th:href="@{/asymmetric-encryption/decryption/}" target="_self" id="asymmetric_dec"
+                               class="ui basic red button">
+                                Decrypt
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="two fields">
+                    <div class="field">
+                        <div class="ui raised segment">
+                            <h3 class="ui header">Encoding</h3>
+                            <a th:href="@{/encoding/}" target="_self" id="encoding" class="ui basic orange button">Encode</a>
+                            <a th:href="@{/decoding/}" target="_self" id="decoding"
+                               class="ui basic red button">Decode</a>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui raised segment">
+                            <h3 class="ui header">Hashing</h3>
+                            <a th:href="@{/hashing/}" target="_self" id="hashing"
+                               class="ui basic teal button">Hash</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

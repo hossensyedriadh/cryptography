@@ -54,35 +54,37 @@
                 <div class="two fields">
                     <div class="required field" id="message_field">
                         <label for="message">Input:</label>
-                        <textarea id="message" class="ui input" th:field="*{text}" rows="5" cols="60" wrap="soft"
+                        <textarea id="message" class="ui input" th:field="*{text}" rows="5" cols="40" wrap="soft"
                                   required></textarea>
                     </div>
-                    <div th:if="${HashRequest.hash != null}">
-                        <div class="field" id="hash_field">
-                            <label for="hash">Hash:</label>
-                            <textarea id="hash" th:text="${HashRequest.hash}" class="ui input" rows="5" cols="60"
-                                      wrap="soft" readonly></textarea>
-                        </div>
+                    <div class="field" id="hash_field">
+                        <label for="hash">Hash:</label>
+                        <textarea id="hash" th:text="${HashRequest.hash}" class="ui input" rows="5" cols="40"
+                                  wrap="soft" readonly></textarea>
                     </div>
                 </div>
             </div>
-            <div class="required field" id="algorithm_field">
-                <label for="algorithm">Hash Algorithm:</label>
-                <select id="algorithm" th:field="*{algorithm}" class="ui dropdown" required>
-                    <option value="MD5">MD5</option>
-                    <option value="BCRYPT">BCrypt</option>
-                    <option value="SHA_1">SHA-1</option>
-                    <optgroup label="SHA-2">
-                        <option value="SHA_2_256">SHA-2 256</option>
-                        <option value="SHA_2_384">SHA-2 384</option>
-                        <option value="SHA_2_512">SHA-2 512</option>
-                    </optgroup>
-                    <optgroup label="SHA-3">
-                        <option value="SHA_3_256">SHA-3 256</option>
-                        <option value="SHA_3_384">SHA-3 384</option>
-                        <option value="SHA_3_512">SHA-3 512</option>
-                    </optgroup>
-                </select>
+            <div class="field">
+                <div class="two fields">
+                    <div class="required field" id="algorithm_field">
+                        <label for="algorithm">Hash Algorithm:</label>
+                        <select id="algorithm" th:field="*{algorithm}" class="ui dropdown" required>
+                            <option value="MD5">MD5</option>
+                            <option value="BCRYPT">BCrypt</option>
+                            <option value="SHA_1">SHA-1</option>
+                            <optgroup label="SHA-2">
+                                <option value="SHA_2_256">SHA-2 256</option>
+                                <option value="SHA_2_384">SHA-2 384</option>
+                                <option value="SHA_2_512">SHA-2 512</option>
+                            </optgroup>
+                            <optgroup label="SHA-3">
+                                <option value="SHA_3_256">SHA-3 256</option>
+                                <option value="SHA_3_384">SHA-3 384</option>
+                                <option value="SHA_3_512">SHA-3 512</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div id="buttons" class="field">
                 <button type="submit" id="hash_button" class="ui blue button">
