@@ -40,9 +40,16 @@ textarea, input {
 }
 
 @media all and (max-width: 400px) and (max-height: 720px) {
+    #menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
     .body {
         margin-bottom: 2vh;
-        height: 80vh;
+        height: 35vh;
         width: 95vw;
     }
 }

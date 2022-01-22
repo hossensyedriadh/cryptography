@@ -16,3 +16,24 @@ body {
     text-align: center;
     margin-bottom: 20vh;
 }
+
+@media all and (min-width: 1600px) {
+    .body {
+        margin-bottom: 25vh;
+    }
+}
+
+@media all and (max-width: 400px) and (max-height: 720px) {
+    #menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .body {
+        margin-bottom: 5vh;
+        height: 30vh;
+        width: 95vw;
+    }
+}

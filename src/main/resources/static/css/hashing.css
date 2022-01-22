@@ -16,12 +16,6 @@ body {
     margin-bottom: 20vh;
 }
 
-#branch {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 #message_field, #hash_field, #algorithm_field, #buttons {
     margin: 10px;
 }
@@ -46,16 +40,17 @@ body {
     }
 }
 
-@media all and (max-height: 768px) and (min-width: 720px) {
-    #branch {
-        flex-direction: row;
-    }
-}
-
 @media all and (max-width: 400px) and (max-height: 720px) {
+    #menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
     .body {
         margin-bottom: 5vh;
-        height: 75vh;
+        height: 30vh;
         width: 95vw;
     }
 }

@@ -13,27 +13,60 @@
 <body>
 <div class="header">
     <h2 class="ui header">Cryptography</h2>
+    <br>
+    <div class="ui menu" id="menu">
+        <a th:href="@{/}" target="_self" class="item">
+            Home
+        </a>
+        <div class="ui simple pointing dropdown link item">
+            <span class="text">Symmetric Encryption</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a th:href="@{/symmetric-encryption/key-generator/}" target="_self" class="item">Generate Key</a>
+                <a th:href="@{/symmetric-encryption/encryption/}" target="_self" class="item">Encryption</a>
+                <a th:href="@{/symmetric-encryption/decryption/}" target="_self" class="item">Decryption</a>
+            </div>
+        </div>
+        <div class="ui simple pointing dropdown link item">
+            <span class="text">Asymmetric Encryption</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a th:href="@{/asymmetric-encryption/key-generator/}" target="_self" class="item">Generate Key Pair</a>
+                <a th:href="@{/asymmetric-encryption/encryption/}" target="_self" class="item">Encryption</a>
+                <a th:href="@{/asymmetric-encryption/decryption/}" target="_self" class="item">Decryption</a>
+            </div>
+        </div>
+        <a th:href="@{/hashing/}" target="_self" class="item">
+            Hashing
+        </a>
+        <a th:href="@{/encoding/}" target="_self" class="item">
+            Encoding
+        </a>
+    </div>
+    <hr>
     <h4 class="ui header">Asymmetric Encryption</h4>
 </div>
 <div class="body">
     <div class="ui raised segment">
         <form th:action="@{/asymmetric-encryption/encrypt/}" autocomplete="off" th:object="${Encryption}" method="post"
               class="ui form" id="encryption_form">
-            <div id="text_fields">
-                <div class="field" id="plain_text_field">
-                    <label for="message">Text to be encrypted:</label>
-                    <textarea id="message" class="ui input" th:field="*{plainText}" wrap="soft" rows="4" cols="50"
-                              required></textarea>
-                </div>
-                <div class="field" id="encrypted_text_field">
-                    <label for="encrypted_text">Encrypted text:</label>
-                    <textarea id="encrypted_text" class="ui input" th:field="*{encryptedText}" wrap="soft" rows="4"
-                              cols="50" readonly></textarea>
+            <div class="field">
+                <div class="two fields">
+                    <div class="required field" id="plain_text_field">
+                        <label for="message">Text to be encrypted:</label>
+                        <textarea id="message" class="ui input" th:field="*{plainText}" wrap="soft" rows="4" cols="50"
+                                  required></textarea>
+                    </div>
+                    <div class="field" id="encrypted_text_field">
+                        <label for="encrypted_text">Encrypted text:</label>
+                        <textarea id="encrypted_text" class="ui input" th:field="*{encryptedText}" wrap="soft" rows="4"
+                                  cols="50" readonly></textarea>
+                    </div>
                 </div>
             </div>
             <div class="field" id="options_field">
                 <div class="two fields">
-                    <div class="field">
+                    <div class="required field">
                         <label for="method">Select Method:</label>
                         <select id="method" th:field="*{method}" class="ui dropdown" onchange="toggle()" required>
                             <option value="USE_EXISTING_KEY"
@@ -46,7 +79,7 @@
                             </option>
                         </select>
                     </div>
-                    <div class="field" id="key_size_field">
+                    <div class="required field" id="key_size_field">
                         <label for="keysize">Key Size:</label>
                         <select class="ui dropdown" id="keysize" th:field="*{keySize}" required>
                             <option value="RSA_1024">RSA-1024</option>
@@ -56,8 +89,8 @@
                     </div>
                 </div>
             </div>
-            <div class="field" id="existing_public_key_field">
-                <label for="existing_public_key">Enter Public Key (X509 Format):</label>
+            <div class="required field" id="existing_public_key_field">
+                <label for="existing_public_key">Enter Public Key:</label>
                 <textarea id="existing_public_key" class="ui input" th:field="*{existingKey}" rows="5" cols="70"
                           onkeyup="validatePublicKey()"
                           wrap="soft"
@@ -65,16 +98,18 @@
                           required></textarea>
                 <small id="public_key_error">Invalid RSA Public Key</small>
             </div>
-            <div id="keys">
-                <div class="field" id="public_key_field">
-                    <label for="new_public_key">Public Key (X509 Format):</label>
-                    <textarea id="new_public_key" class="ui input" th:text="${Encryption.genPublicKey}" rows="5"
-                              cols="50" wrap="soft" readonly></textarea>
-                </div>
-                <div class="field" id="private_key_field">
-                    <label for="new_private_key">Private Key (PKCS#8 Format):</label>
-                    <textarea id="new_private_key" class="ui input" th:text="${Encryption.genPrivateKey}" rows="5"
-                              cols="50" wrap="soft" readonly></textarea>
+            <div class="required field" id="keys">
+                <div class="two fields">
+                    <div class="field" id="public_key_field">
+                        <label for="new_public_key">Public Key:</label>
+                        <textarea id="new_public_key" class="ui input" th:text="${Encryption.genPublicKey}" rows="5"
+                                  cols="70" wrap="soft" readonly></textarea>
+                    </div>
+                    <div class="field" id="private_key_field">
+                        <label for="new_private_key">Private Key:</label>
+                        <textarea id="new_private_key" class="ui input" th:text="${Encryption.genPrivateKey}" rows="5"
+                                  cols="70" wrap="soft" readonly></textarea>
+                    </div>
                 </div>
             </div>
             <small id="notice">Text is encrypted using the generated public key. For decryption, the private key will be
@@ -94,5 +129,6 @@
     </div>
 </div>
 <script th:src="@{/js/asymmetric-encryption.js}" type="text/javascript"></script>
+<noscript>JavaScript is required. Some pages may not function correctly</noscript>
 </body>
 </html>

@@ -13,6 +13,37 @@
 <body>
 <div class="header">
     <h2 class="ui header">Cryptography</h2>
+    <br>
+    <div class="ui menu" id="menu">
+        <a th:href="@{/}" target="_self" class="item">
+            Home
+        </a>
+        <div class="ui simple pointing dropdown link item">
+            <span class="text">Symmetric Encryption</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a th:href="@{/symmetric-encryption/key-generator/}" target="_self" class="item">Generate Key</a>
+                <a th:href="@{/symmetric-encryption/encryption/}" target="_self" class="item">Encryption</a>
+                <a th:href="@{/symmetric-encryption/decryption/}" target="_self" class="item">Decryption</a>
+            </div>
+        </div>
+        <div class="ui simple pointing dropdown link item">
+            <span class="text">Asymmetric Encryption</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a th:href="@{/asymmetric-encryption/key-generator/}" target="_self" class="item">Generate Key Pair</a>
+                <a th:href="@{/asymmetric-encryption/encryption/}" target="_self" class="item">Encryption</a>
+                <a th:href="@{/asymmetric-encryption/decryption/}" target="_self" class="item">Decryption</a>
+            </div>
+        </div>
+        <a th:href="@{/hashing/}" target="_self" class="item">
+            Hashing
+        </a>
+        <a th:href="@{/encoding/}" target="_self" class="item">
+            Encoding
+        </a>
+    </div>
+    <hr>
     <h4 class="ui header">Symmetric Encryption</h4>
 </div>
 <div class="body">
@@ -47,5 +78,6 @@
     </div>
 </div>
 <script type="text/javascript" th:src="@{/js/symmetric-key-generator.js}"></script>
+<noscript>JavaScript is required. Some pages may not function correctly</noscript>
 </body>
 </html>

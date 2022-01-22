@@ -13,27 +13,60 @@
 <body>
 <div class="header">
     <h2 class="ui header">Cryptography</h2>
+    <br>
+    <div class="ui menu" id="menu">
+        <a th:href="@{/}" target="_self" class="item">
+            Home
+        </a>
+        <div class="ui simple pointing dropdown link item">
+            <span class="text">Symmetric Encryption</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a th:href="@{/symmetric-encryption/key-generator/}" target="_self" class="item">Generate Key</a>
+                <a th:href="@{/symmetric-encryption/encryption/}" target="_self" class="item">Encryption</a>
+                <a th:href="@{/symmetric-encryption/decryption/}" target="_self" class="item">Decryption</a>
+            </div>
+        </div>
+        <div class="ui simple pointing dropdown link item">
+            <span class="text">Asymmetric Encryption</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a th:href="@{/asymmetric-encryption/key-generator/}" target="_self" class="item">Generate Key Pair</a>
+                <a th:href="@{/asymmetric-encryption/encryption/}" target="_self" class="item">Encryption</a>
+                <a th:href="@{/asymmetric-encryption/decryption/}" target="_self" class="item">Decryption</a>
+            </div>
+        </div>
+        <a th:href="@{/hashing/}" target="_self" class="item">
+            Hashing
+        </a>
+        <a th:href="@{/encoding/}" target="_self" class="item">
+            Encoding
+        </a>
+    </div>
+    <hr>
     <h4 class="ui header" id="headline">Hashing</h4>
 </div>
 <div class="body">
     <div class="ui raised segment">
         <form class="ui form" autocomplete="off" th:object="${HashRequest}" name="hash_form"
               method="post" th:action="@{/hashing/generate-hash/}">
-            <div id="branch">
-                <div class="field" id="message_field">
-                    <label for="message">Input:</label>
-                    <textarea id="message" class="ui input" th:field="*{text}" rows="5" cols="60" wrap="soft"
-                              required></textarea>
-                </div>
-                <div th:if="${HashRequest.hash != null}">
-                    <div class="field" id="hash_field">
-                        <label for="hash">Hash:</label>
-                        <textarea id="hash" th:text="${HashRequest.hash}" class="ui input" rows="5" cols="60"
-                                  wrap="soft" readonly></textarea>
+            <div class="field">
+                <div class="two fields">
+                    <div class="required field" id="message_field">
+                        <label for="message">Input:</label>
+                        <textarea id="message" class="ui input" th:field="*{text}" rows="5" cols="60" wrap="soft"
+                                  required></textarea>
+                    </div>
+                    <div th:if="${HashRequest.hash != null}">
+                        <div class="field" id="hash_field">
+                            <label for="hash">Hash:</label>
+                            <textarea id="hash" th:text="${HashRequest.hash}" class="ui input" rows="5" cols="60"
+                                      wrap="soft" readonly></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="field" id="algorithm_field">
+            <div class="required field" id="algorithm_field">
                 <label for="algorithm">Hash Algorithm:</label>
                 <select id="algorithm" th:field="*{algorithm}" class="ui dropdown" required>
                     <option value="MD5">MD5</option>
@@ -64,5 +97,6 @@
         </form>
     </div>
 </div>
+<noscript>JavaScript is required. Some pages may not function correctly</noscript>
 </body>
 </html>
