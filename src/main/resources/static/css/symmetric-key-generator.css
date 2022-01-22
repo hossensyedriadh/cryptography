@@ -13,7 +13,7 @@ body {
 }
 
 .body {
-    margin-bottom: 5vh;
+    margin-bottom: 25vh;
 }
 
 #buttons {
@@ -21,28 +21,24 @@ body {
     text-align: center;
 }
 
-#input_error, #key_error {
-    color: #D01919;
-}
-
-textarea, input {
-    font-family: "Lucida Console", Consolas, sans-serif !important;
-}
-
 .button {
     transition: all .2s !important;
 }
 
+textarea {
+    font-family: "Lucida Console", Consolas, sans-serif !important;
+}
+
 @media all and (min-width: 1600px) {
     .body {
-        margin-bottom: 25vh;
+        margin-bottom: 35vh;
     }
 }
 
 @media all and (max-width: 400px) and (max-height: 720px) {
     .body {
-        margin-bottom: 2vh;
-        height: 80vh;
+        margin-bottom: 5vh;
+        height: 60vh;
         width: 95vw;
     }
 }

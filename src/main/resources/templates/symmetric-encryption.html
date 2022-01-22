@@ -12,12 +12,85 @@
 </head>
 <body>
 <div class="header">
-
+    <h2 class="ui header">Cryptography</h2>
+    <h4 class="ui header">Symmetric Encryption</h4>
 </div>
 <div class="body">
     <div class="ui raised segment">
-
+        <form id="encryption_form" class="ui form" th:action="@{/symmetric-encryption/encrypt/}"
+              th:object="${Encryption}" method="post">
+            <div class="field">
+                <div class="two fields">
+                    <div class="required field">
+                        <label for="plain_text_input">Input:</label>
+                        <textarea id="plain_text_input" th:field="*{plainTextMessage}" class="ui input" rows="4"
+                                  cols="40" wrap="soft"
+                                  placeholder="Plain text input" required></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="encrypted_text">Encrypted input:</label>
+                        <textarea id="encrypted_text" th:text="${Encryption.encryptedMessage}" class="ui input" rows="4"
+                                  cols="40" wrap="soft"
+                                  readonly></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="init_vector">Initialization Vector:</label>
+                    <input type="text" class="ui input" th:value="${Encryption.initializationVector}" id="init_vector"
+                           readonly>
+                    <small>Required for decryption</small>
+                </div>
+                <div class="field">
+                    <div class="two fields">
+                        <div class="required field">
+                            <label for="method">Method:</label>
+                            <select id="method" class="ui dropdown" th:field="*{method}" onChange="toggle()" required>
+                                <option value="USE_EXISTING_KEY">Use existing key</option>
+                                <option value="GENERATE_NEW_KEY">Generate new key</option>
+                            </select>
+                        </div>
+                        <div class="required field" id="key_field">
+                            <label for="key">Key:</label>
+                            <textarea id="key" class="ui input" rows="3" th:field="*{key}" onkeyup="validateKey()"
+                                      cols="40"
+                                      wrap="soft" placeholder="Base64 encoded AES Key"></textarea>
+                            <small id="key_error">Invalid Key</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="required field" id="generate_new_key_field">
+                    <div class="two fields">
+                        <div class="field">
+                            <label for="key_alg">Algorithm:</label>
+                            <select id="key_alg" class="ui dropdown" th:field="*{algorithm}">
+                                <option value="AES_128_GCM">AES-128 GCM</option>
+                                <option value="AES_256_GCM">AES-256 GCM</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="generated_key">Generated Key:</label>
+                            <textarea id="generated_key" class="ui input" th:field="*{key}" rows="3"
+                                      cols="40" wrap="soft"
+                                      readonly></textarea>
+                            <small>Input is encrypted using this key and will be required for decryption</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="field" id="buttons">
+                    <button type="submit" id="submit_button" class="ui blue button">
+                        <i class="lock icon"></i>
+                        Encrypt
+                    </button>
+                    <a class="ui button" onclick="clearFields()" th:href="@{/symmetric-encryption/encryption/}"
+                       target="_self">
+                        <i class="times icon"></i>
+                        Reset
+                    </a>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+<script type="text/javascript" th:src="@{/js/symmetric-encryption.js}"></script>
 </body>
 </html>
