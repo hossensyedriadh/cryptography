@@ -41,7 +41,7 @@ body {
 
 @media all and (min-width: 1600px) {
     .body {
-        margin-bottom: 35vh;
+        margin-bottom: 25vh;
     }
 
     #keys {
