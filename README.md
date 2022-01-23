@@ -1,2 +1,2 @@
 # cryptography
-Cryptographic algorithms' demonstration application
+Implementation of various encryption, hashing and encoding algorithms

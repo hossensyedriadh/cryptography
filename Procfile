@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar target/cryptography-1.0.0.jar
