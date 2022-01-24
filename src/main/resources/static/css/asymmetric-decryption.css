@@ -21,9 +21,8 @@ body {
     margin: 5px;
 }
 
-#encrypted_text, #decrypted_text,
-#private_key {
-    font-family: "Lucida Console", Consolas, sans-serif;
+textarea {
+    font-family: "Lucida Console", Consolas, sans-serif !important;
 }
 
 #private_key_error, #input_error {

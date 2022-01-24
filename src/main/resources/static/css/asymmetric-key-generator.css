@@ -26,8 +26,8 @@ body {
     margin: 5px;
 }
 
-#public_key, #private_key {
-    font-family: "Lucida Console", Consolas, sans-serif;
+textarea {
+    font-family: "Lucida Console", Consolas, sans-serif !important;
 }
 
 .button {
@@ -41,7 +41,7 @@ body {
 
 @media all and (min-width: 1600px) {
     .body {
-        margin-bottom: 25vh;
+        margin-bottom: 15vh;
     }
 
     #keys {

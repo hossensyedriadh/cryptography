@@ -33,9 +33,8 @@ body {
     margin: 5px;
 }
 
-#message, #encrypted_text, #existing_public_key,
-#public_key, #private_key {
-    font-family: "Lucida Console", Consolas, sans-serif;
+textarea {
+    font-family: "Lucida Console", Consolas, sans-serif !important;
 }
 
 #buttons {
