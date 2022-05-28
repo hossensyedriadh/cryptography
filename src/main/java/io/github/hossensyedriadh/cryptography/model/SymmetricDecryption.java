@@ -13,6 +13,4 @@ public class SymmetricDecryption {
     private String decryptedText;
 
     private String key;
-
-    private String iv;
 }

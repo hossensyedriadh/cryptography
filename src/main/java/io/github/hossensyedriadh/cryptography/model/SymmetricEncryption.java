@@ -19,6 +19,4 @@ public class SymmetricEncryption {
     private SymmetricKeyAlgorithm algorithm;
 
     private String key;
-
-    private String initializationVector;
 }

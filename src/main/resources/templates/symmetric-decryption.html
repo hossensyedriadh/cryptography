@@ -53,7 +53,7 @@
 </div>
 <div class="body">
     <div class="ui raised segment">
-        <form id="encryption_form" class="ui form" th:action="@{/symmetric-encryption/decrypt/}"
+        <form id="decryption_form" class="ui form" th:action="@{/symmetric-encryption/decrypt/}"
               th:object="${Decryption}" method="post">
             <div class="field">
                 <div class="two fields">
@@ -72,15 +72,10 @@
                                   readonly></textarea>
                     </div>
                 </div>
-                <div class="required field">
-                    <label for="init_vector">Initialization Vector:</label>
-                    <input type="text" class="ui input" th:field="*{iv}" id="init_vector" required>
-                </div>
                 <div class="required field" id="key_field">
                     <label for="key">Key:</label>
-                    <textarea id="key" class="ui input" rows="3" th:field="*{key}" onKeyUp="validateKey()" cols="40"
-                              wrap="soft" placeholder="Base64 encoded AES Key" required></textarea>
-                    <small id="key_error">Invalid Key</small>
+                    <textarea id="key" class="ui input" rows="3" th:field="*{key}" cols="40"
+                              wrap="soft" placeholder="Key" required></textarea>
                 </div>
                 <div class="field" id="buttons">
                     <button type="submit" id="submit_button" class="ui blue button">

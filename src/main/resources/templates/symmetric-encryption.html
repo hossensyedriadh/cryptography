@@ -71,12 +71,6 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label for="init_vector">Initialization Vector:</label>
-                    <input type="text" class="ui input" th:value="${Encryption.initializationVector}" id="init_vector"
-                           readonly>
-                    <small>Required for decryption</small>
-                </div>
-                <div class="field">
                     <div class="two fields">
                         <div class="required field">
                             <label for="method">Method:</label>
@@ -87,10 +81,8 @@
                         </div>
                         <div class="required field" id="key_field">
                             <label for="key">Key:</label>
-                            <textarea id="key" class="ui input" rows="3" th:field="*{key}" onkeyup="validateKey()"
-                                      cols="40"
-                                      wrap="soft" placeholder="Base64 encoded AES Key"></textarea>
-                            <small id="key_error">Invalid Key</small>
+                            <textarea id="key" name="key" class="ui input" rows="3" th:field="*{key}" cols="40"
+                                      wrap="soft" placeholder="Key"></textarea>
                         </div>
                     </div>
                 </div>
@@ -105,7 +97,8 @@
                         </div>
                         <div class="field">
                             <label for="generated_key">Generated Key:</label>
-                            <textarea id="generated_key" class="ui input" th:field="*{key}" rows="3"
+                            <textarea id="generated_key" name="generated_key" class="ui input" th:field="*{key}"
+                                      rows="3"
                                       cols="40" wrap="soft"
                                       readonly></textarea>
                             <small>Input is encrypted using this key and will be required for decryption</small>
