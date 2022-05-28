@@ -5,7 +5,6 @@ let key = document.getElementById('key');
 let generate_new_key_field = document.getElementById('generate_new_key_field');
 let key_alg = document.getElementById('key_alg');
 let generated_key = document.getElementById('generated_key');
-let submit_button = document.getElementById('submit_button');
 
 toggle();
 
