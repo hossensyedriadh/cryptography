@@ -25,9 +25,9 @@ public class AsymmetricKeyGenerator {
     private KeyPair keyPair;
 
     public AsymmetricKeyGenerator(KeyPair keyPair) {
-        this.publicKey = "-----BEGIN RSA PUBLIC KEY-----\n".concat(Base64.getEncoder()
-                .encodeToString(keyPair.getPublic().getEncoded())).concat("\n-----END RSA PUBLIC KEY-----\n");
-        this.privateKey = "-----BEGIN RSA PRIVATE KEY-----\n".concat(Base64.getEncoder()
-                .encodeToString(keyPair.getPrivate().getEncoded())).concat("\n-----END RSA PRIVATE KEY-----\n");
+        this.publicKey = "-----BEGIN PUBLIC KEY-----\n".concat(Base64.getEncoder()
+                .encodeToString(keyPair.getPublic().getEncoded())).concat("\n-----END PUBLIC KEY-----\n");
+        this.privateKey = "-----BEGIN PRIVATE KEY-----\n".concat(Base64.getEncoder()
+                .encodeToString(keyPair.getPrivate().getEncoded())).concat("\n-----END PRIVATE KEY-----\n");
     }
 }

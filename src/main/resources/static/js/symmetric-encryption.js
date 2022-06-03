@@ -6,8 +6,6 @@ let generate_new_key_field = document.getElementById('generate_new_key_field');
 let key_alg = document.getElementById('key_alg');
 let generated_key = document.getElementById('generated_key');
 
-toggle();
-
 function toggle() {
     if (method.value === 'USE_EXISTING_KEY') {
         key.required = true;
@@ -23,6 +21,8 @@ function toggle() {
         key.value = null;
     }
 }
+
+toggle();
 
 function clearFields() {
     encryption_form.reset();

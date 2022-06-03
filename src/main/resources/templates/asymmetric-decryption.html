@@ -76,7 +76,7 @@
                 <label for="private_key">Enter Private Key:</label>
                 <textarea id="private_key" class="ui input" th:field="*{privateKey}" onkeyup="validatePrivateKey()"
                           rows="5" cols="70" wrap="soft"
-                          placeholder="-----BEGIN RSA PRIVATE KEY-----&#10;//PKCS#8 Key&#10;-----END RSA PRIVATE KEY-----&#10;"
+                          placeholder="-----BEGIN PRIVATE KEY-----&#10;//PKCS#8 Key&#10;-----END PRIVATE KEY-----&#10;"
                           required></textarea>
                 <small id="private_key_error">Invalid RSA Private Key</small>
             </div>

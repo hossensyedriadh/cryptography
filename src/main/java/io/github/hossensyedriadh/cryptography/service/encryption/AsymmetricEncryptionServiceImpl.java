@@ -50,16 +50,10 @@ public final class AsymmetricEncryptionServiceImpl implements AsymmetricEncrypti
     @Override
     public String encryptMessage(String message, String publicKey) {
         try {
-            if (publicKey.startsWith("-----BEGIN RSA PUBLIC KEY-----")
-                    && publicKey.endsWith("-----END RSA PUBLIC KEY-----")) {
-                String substring = publicKey.substring(32);
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(substring);
-                String reverseSubstring = stringBuilder.reverse().toString();
-                reverseSubstring = reverseSubstring.substring(30);
-                stringBuilder = new StringBuilder();
-                stringBuilder.append(reverseSubstring);
-                publicKey = stringBuilder.reverse().toString();
+            if (publicKey.startsWith("-----BEGIN PUBLIC KEY-----")) {
+                publicKey = publicKey.replace("-----BEGIN PUBLIC KEY-----", "")
+                        .replaceAll("\n", "").replaceAll("\r", "")
+                        .replace("-----END PUBLIC KEY-----", "");
             }
 
             byte[] decodedPublicKey = Base64.getDecoder().decode(publicKey.getBytes(StandardCharsets.UTF_8));
@@ -90,16 +84,10 @@ public final class AsymmetricEncryptionServiceImpl implements AsymmetricEncrypti
     @Override
     public String decryptMessage(String message, String privateKey) {
         try {
-            if (privateKey.startsWith("-----BEGIN RSA PRIVATE KEY-----")
-                    && privateKey.endsWith("-----END RSA PRIVATE KEY-----")) {
-                String substring = privateKey.substring(33);
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(substring);
-                String reverseSubstring = stringBuilder.reverse().toString();
-                reverseSubstring = reverseSubstring.substring(31);
-                stringBuilder = new StringBuilder();
-                stringBuilder.append(reverseSubstring);
-                privateKey = stringBuilder.reverse().toString();
+            if (privateKey.startsWith("-----BEGIN PRIVATE KEY-----")) {
+                privateKey = privateKey.replace("-----BEGIN PRIVATE KEY-----", "")
+                        .replaceAll("\n", "").replaceAll("\r", "")
+                        .replace("-----END PRIVATE KEY-----", "");
             }
             byte[] decodedPrivateKey = Base64.getDecoder().decode(privateKey.getBytes(StandardCharsets.UTF_8));
 
