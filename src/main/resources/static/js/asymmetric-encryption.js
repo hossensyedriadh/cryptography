@@ -52,8 +52,8 @@ function gen_new() {
 }
 
 function validatePublicKey() {
-    if (existing_public_key.value.startsWith("-----BEGIN RSA PUBLIC KEY-----\n")
-        && existing_public_key.value.endsWith("\n-----END RSA PUBLIC KEY-----\n")) {
+    if (existing_public_key.value.startsWith("-----BEGIN PUBLIC KEY-----\n")
+        && existing_public_key.value.endsWith("\n-----END PUBLIC KEY-----\n")) {
         submit_button.disabled = false;
         public_key_error.style.display = 'none';
         existing_public_key_field.className = 'field';
