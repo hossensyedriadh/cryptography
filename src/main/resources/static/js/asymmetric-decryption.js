@@ -26,7 +26,7 @@ function validateInput() {
 
 function validatePrivateKey() {
     if (private_key.value.startsWith("-----BEGIN PRIVATE KEY-----\n")
-        && private_key.value.endsWith("\n-----END PRIVATE KEY-----\n")) {
+        && private_key.value.endsWith("\n-----END PRIVATE KEY-----")) {
         submit_button.disabled = false;
         private_key_error.style.display = 'none';
         private_key_field.className = 'field';
