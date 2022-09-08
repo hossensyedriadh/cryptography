@@ -12,8 +12,6 @@ let notice = document.getElementById('notice');
 let submit_button = document.getElementById('submit_button');
 let public_key_error = document.getElementById('public_key_error');
 
-public_key_error.style.display = 'none';
-
 if (method.value === "USE_EXISTING_KEY") {
     existing();
 } else if (method.value === "GENERATE_NEW_KEY") {
@@ -39,6 +37,7 @@ function existing() {
     notice.style.display = "none";
     new_public_key.value = null;
     new_private_key.value = null;
+    submit_button.disabled = false;
 }
 
 function gen_new() {
@@ -49,11 +48,12 @@ function gen_new() {
     keysize.required = true;
     notice.style.display = "block";
     existing_public_key.value = null;
+    submit_button.disabled = false;
 }
 
 function validatePublicKey() {
     if (existing_public_key.value.startsWith("-----BEGIN PUBLIC KEY-----\n")
-        && existing_public_key.value.endsWith("\n-----END PUBLIC KEY-----")) {
+        && existing_public_key.value.endsWith("\n-----END PUBLIC KEY-----\n")) {
         submit_button.disabled = false;
         public_key_error.style.display = 'none';
         existing_public_key_field.className = 'field';
